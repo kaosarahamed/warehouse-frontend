@@ -1,0 +1,309 @@
+/* upc table */
+.csrSection{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0px;
+  position: relative;
+}
+.csrContainer{
+  width: 98%;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+.csrContainer h1{
+  font-size: 50px;
+  text-align: center;
+  font-weight: 500;
+  color: #141414;
+  border-bottom: 1px solid #141414;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+.csrTable table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+}
+.csrTable table tr th{
+  background-color: #FF4719;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 20px;
+  font-family: "Poppins", sans-serif; 
+}  
+.csrSection h5{
+  background-color: #FF4719;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+  text-transform: capitalize;
+  width: 20%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+td, th {
+  border: 1px solid #F5F5F5;
+  text-align: left;
+  padding: 10px;
+}
+.csrTable table tr{
+  background-color: #fff;
+  color: #141414;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.edit{
+  padding-left: 10px;
+  margin-bottom: -5px;
+}
+.csrTable table tr td span{
+  font-size: 20px;
+  font-weight: 500;
+  color: #FF4719;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* upc table */
+/* processForm */
+.processForm{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+}
+.processFormContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.processForm form{
+  padding: 100px;
+  width: 600px;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 5px;
+  position: relative;
+}
+.processForm span{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+}
+.processForm select{
+  width: 100%;
+  height: 50px;
+  background-color: #F5F5F5;
+  border: 1px solid #00000023;
+  padding: 10px;
+  border-radius: 5px;
+}
+.processForm button{
+  background-color: #FF4719;
+  font-size: 20px;
+  color: #fff;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2S ease-in-out;
+}
+.processForm button:hover{
+  background-color: #141414;
+  padding: 15px 60px;
+  
+}
+.processForm svg{
+  position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 40px;
+    color: #FF4719;
+    cursor: pointer;
+}
+.processForm.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: 0.3s ease;
+}
+.processForm.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: 0.3s ease;
+}
+
+/* processForm */
+/* csrForm */
+.csrForm{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+}
+.csrFormContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.csrForm form{
+  padding: 100px;
+  width: 600px;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 5px;
+  position: relative;
+}
+.csrForm span{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+}
+.csrForm textarea{
+  width: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+  border: 1px solid #00000023;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+.csrForm button{
+  background-color: #FF4719;
+  font-size: 20px;
+  color: #fff;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2S ease-in-out;
+}
+.csrForm button:hover{
+  background-color: #141414;
+  padding: 15px 60px;
+  
+}
+.csrFormContainer svg{
+  position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 40px;
+    color: #FF4719;
+    cursor: pointer;
+}
+.csrForm.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: 0.3s ease;
+}
+.csrForm.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: 0.3s ease;
+}
+/* csrForm */
+/* csr filter */
+.csrFiler{
+  width: 60%;
+  height: 100px;
+}
+.crsFilterContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+.crsFilterContainer input{
+  width: 100%;
+  height: 25px;
+  background-color: #fff;
+  border: 1px solid #00000023;
+  padding: 10px;
+  border-radius: 5px;
+}
+.crsFilterContainer select{
+  width: 100%;
+  height: 45px;
+  background-color: #fff;
+  border: 1px solid #00000023;
+  padding: 10px;
+  border-radius: 5px;
+}
+.crsFilterContainer button{
+  font-size: 14px;
+  color: #fff;
+  background-color: #FF4719;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  height: 45px;
+  transition: 0.3s;
+}
+.crsFilterContainer button:hover{
+  background-color: #141414;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.crsFilterContainer input[disabled] {
+  cursor: not-allowed;
+}
+.crsFilterContainer select[disabled] {
+  cursor: not-allowed;
+}
+/* csr filter */
+/* media query */
+@media screen and (max-width: 1400px){
+  .csrTable{
+      overflow-x: auto;
+  }
+  .csrContainer{
+      width: 95%;
+  }
+  .csrContainer h1{
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 768px){
+  .processForm form{
+    width: 90%;
+    padding: 30px;
+  }
+  .csrForm form{
+    width: 90%;
+    padding: 30px;
+  }
+}

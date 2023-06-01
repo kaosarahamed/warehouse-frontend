@@ -1,0 +1,75 @@
+header{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+}
+.headerContainer{
+    width: 1000px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerContainer .logo a{
+    font-size: 25px;
+    color: #141414;
+    font-weight: 600;
+    font-family: "Poppins,", sans-serif;
+    text-decoration: none;
+}
+.headerContainer .menu{
+    display: flex;
+    gap: 20px;
+}
+.headerContainer .menu h2{
+    display: none;
+}
+.headerContainer .menu .mainMenu{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.headerContainer .menu .mainMenu li{
+    list-style: none;
+}
+.headerContainer .menu .mainMenu li a{
+    font-size: 16px;
+    color: #141414;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.headerContainer .menu .mainMenu li a:hover{
+    color: #FF4719;
+    border-bottom: 1px solid #FF4719;
+}
+.menu svg{
+    background-color: #FF4719;
+    color: #fff;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+/* media query */
+@media screen and (max-width: 1000px){
+    .headerContainer{
+        width: 95%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .headerContainer .menu .mainMenu{
+        display: none;
+    }
+    .headerContainer .menu svg{
+        display: block;
+    }
+}
