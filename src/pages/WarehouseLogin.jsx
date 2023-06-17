@@ -3,6 +3,7 @@ import Style from '../styles/Global.module.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import { RxCross2 } from "react-icons/rx";
+import { FaUser, FaLock } from "react-icons/fa";
 
 const WarehouseLogin = () => {
 
@@ -10,10 +11,12 @@ const WarehouseLogin = () => {
     const warehouseusername = localStorage.getItem("warehouseusername");
     const csrusername = localStorage.getItem("csrusername");
     const navigate = useNavigate();
-    
+  
     useEffect(() => {
         if(warehouseusername || csrusername){
-            navigate("/dashboard")
+            setTimeout(() => {
+                navigate("/dashboard")
+            }, 2000);
         }
     },[warehouseusername,csrusername , navigate])
 
@@ -25,6 +28,8 @@ const { username,password} = users;
 const [response, setresponse] = useState("");
 const [loading, setLoading] = useState(false);
 const [notify, setnotify] = useState(false);
+
+
 
     const handleSubmit = async (e) => {
         setLoading(true);
@@ -38,11 +43,8 @@ const [notify, setnotify] = useState(false);
                 localStorage.setItem("warehousetoken", res.data.token);
                 localStorage.setItem("warehouseusername", res.data.user.username);
                 localStorage.setItem("warehouseId", res.data.user._id);
-                console.log(res);
+                
                 setLoading(false)
-                setTimeout(() => {
-                    navigate("/dashboard")
-                }, 2000);
             }).catch((err) => {
                 setresponse(err.response.data.message);
                 setLoading(false)
@@ -68,19 +70,22 @@ const [notify, setnotify] = useState(false);
           <h3>{response}</h3>
           <RxCross2 onClick={() => {setnotify(true)}}/>
           </div>}
+        <Link to="/" className={Style.logo}>WH</Link>
         <h2> Warehouse User Login</h2>
         <form onSubmit={handleSubmit}>
             <span>
-                <label htmlFor="username">Username</label>
+                <FaUser />
                 <input required value={username} type="text" name="username" placeholder="Enter username" id="username" onChange={(e) => handleChange(e)}/>
             </span>
             <span>
-                <label htmlFor="password">Password</label>
+                <FaLock />
                 <input required value={password} type="password" name="password" id="password" placeholder="Enter password" onChange={(e) => handleChange(e)}/>
             </span>
-            <div className={Style.formFooter}>
                 <button type="submit">{loading ? "Loading..." : "Warehouse Login"}</button>
-                <Link to="/csrlogin">or CSR User Login</Link>
+            <div className={Style.formFooter}>
+                <Link to="/csrlogin">CSR Login</Link>
+                <p>|</p>
+                <Link to="/warehouseregistration"> Create Account</Link>
             </div>
         </form>
         </div>

@@ -11,27 +11,28 @@ import Dashboard from './pages/Dashboard';
 import WarehouseRegistration from './pages/WarehouseRegistration';
 import CsrRegistration from './pages/CsrRegistration';
 import UploadProducts from './pages/UploadProducts';
+import UpcTable from './components/UpcTable';
 
 function App() {
 
-  const warehouseUser = localStorage.getItem("warehouseusername");
-    const csruser = localStorage.getItem("csrusername");
+
 
   return (
     <BrowserRouter>
-    <Headder />
       <Routes>
         <Route path='/' element={<WarehouseLogin />}/>
         <Route path='/csrlogin' element={<CsrLogin />}/>
-        <Route path='/warehouse' element={<Warehouse />}/>
-        <Route path='/csr' element={<Csr />}/>
         <Route path='/warehouseregistration' element={<WarehouseRegistration />}/>
         <Route path='/csrregistration' element={<CsrRegistration />}/>
         <Route path='/dashboard' element={<Dashboard />}>
-          <Route path='/dashboard' element={ warehouseUser ? <WarrehouseSSetting  /> : csruser ? <CsrSetting /> : null}/>
+          <Route element={<Headder />}/>
+          <Route path='/dashboard' element={<UpcTable  />}/>
           <Route path='/dashboard/warehousesetting' element={<WarrehouseSSetting />}/>
           <Route path='/dashboard/csrsetting' element={<CsrSetting />}/>
           <Route path='/dashboard/upload' element={<UploadProducts />}/>
+          <Route path='/dashboard/csr' element={<Csr />}/>
+          <Route path='/dashboard/warehouse' element={<Warehouse />}/>
+          <Route path='/dashboard/packages' element={<UpcTable />}/>
         </Route>
       </Routes>
     </BrowserRouter>

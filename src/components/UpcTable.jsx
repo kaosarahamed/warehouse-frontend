@@ -1,10 +1,41 @@
 import Style from "../styles/UpcTable.module.css";
-import PropTypes from 'prop-types';
-const UpcTable = (props) => {
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Pagination from "./Pagination";
+
+const UpcTable = () => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPages, setPostPages] = useState(10);
+  const [getpackages, setgetPackages] = useState([]);
+    const [response, setresponse] = useState("");
+  const getAPiPackages = async () => {
+    await axios.get("http://localhost:4000/packages").then((res) => {
+        setgetPackages(res.data.packages)
+    }).catch((err) => {
+        setresponse(err.response.data.message)
+    })
+}
+
+useEffect(() => {
+  getAPiPackages()
+},[])
+
+
+
+const lastIndex = currentPage * postPages;
+const firstIndex = lastIndex - postPages;
+const slicePost = getpackages.slice(firstIndex, lastIndex);
+
+
+
+
     return (
+      <>
         <section className={Style.upcSection}>
         <div className={Style.upcContainer}>
-            <h1>PACKAGES</h1>
+            <h2>{response && response}</h2>
+          <h1>Packages</h1>
             <div className={Style.upcTable}>
                 <table>
                     <thead>
@@ -28,7 +59,7 @@ const UpcTable = (props) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {props.getpackages ? props.getpackages.map((item, index) => {
+                    {slicePost ? slicePost.map((item, index) => {
                       return( 
                       <tr key={item._id}>
                       <td>{"P" + index}</td>
@@ -56,13 +87,10 @@ const UpcTable = (props) => {
             </div>
         </div>
     </section>
+        <Pagination totalPosts={getpackages} postPerPage={postPages} setCurrentPage={setCurrentPage} currentPage={currentPage} setPostPages={setPostPages}/>
+        </>
     );
 };
-
-UpcTable.propTypes = {
-  getpackages: PropTypes.any,
-  getAPiPackages: PropTypes.any,
-}
 
 export default UpcTable;
 

@@ -5,21 +5,24 @@ header{
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+    box-shadow: 0 2px 30px 2px rgba(0,0,0,.1);
 }
 .headerContainer{
-    width: 1000px;
-    height: 90px;
+    width: 100%;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.headerContainer .logo a{
-    font-size: 25px;
+.logo a{
+    font-size: 16px;
     color: #141414;
-    font-weight: 600;
-    font-family: "Poppins,", sans-serif;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
     text-decoration: none;
+    transition: 0.3s;
+    padding-left: 30px;
+    text-transform: capitalize;
 }
 .headerContainer .menu{
     display: flex;
@@ -32,6 +35,7 @@ header{
     display: flex;
     align-items: center;
     gap: 20px;
+    margin-right: 20px;
 }
 .headerContainer .menu .mainMenu li{
     list-style: none;
@@ -48,7 +52,7 @@ header{
     color: #FF4719;
     border-bottom: 1px solid #FF4719;
 }
-.menu svg{
+.hamBurger{
     background-color: #FF4719;
     color: #fff;
     padding: 6px;
@@ -58,7 +62,36 @@ header{
     cursor: pointer;
     display: none;
 }
-
+.headerLogo .mainLogo{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #141414;
+    font-family: "Poppins", sans-serif;
+}
+.headerLogo span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.headerLogo{
+    display: none;
+}
+.headerLogo p{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FF4719;
+    border-radius: 50px;
+    background-color: #ecf0f3;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lobster', cursive;
+}
 /* media query */
 @media screen and (max-width: 1000px){
     .headerContainer{
@@ -69,7 +102,13 @@ header{
     .headerContainer .menu .mainMenu{
         display: none;
     }
-    .headerContainer .menu svg{
+    .headerContainer .menu .hamBurger{
+        display: block;
+    }
+    .logo{
+        display: none;
+    }
+    .headerLogo{
         display: block;
     }
 }

@@ -3,7 +3,7 @@ import Style from '../styles/Global.module.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import { RxCross2 } from "react-icons/rx";
-
+import { FaUser, FaLock } from "react-icons/fa";
 const WarehouseRegistration = () => {
 
 
@@ -65,19 +65,22 @@ const [notify, setnotify] = useState(false);
           <h3>{response}</h3>
           <RxCross2 onClick={() => {setnotify(true)}}/>
           </div>}
+          <Link to="/" className={Style.logo}>WH</Link>
         <h2> Warehouse User Registration</h2>
         <form onSubmit={handleSubmit}>
             <span>
-                <label htmlFor="username">Username</label>
+            <FaUser />
                 <input required value={username} type="text" name="username" placeholder="Enter username" id="username" onChange={(e) => handleChange(e)}/>
             </span>
             <span>
-                <label htmlFor="password">Password</label>
+            <FaLock />
                 <input required value={password} type="password" name="password" id="password" placeholder="Enter password" onChange={(e) => handleChange(e)}/>
             </span>
-            <div className={Style.formFooter}>
                 <button type="submit">{loading ? "Loading..." : "Warehouse Registration"}</button>
-                <Link to="/csrregistration">or CSR User Registration</Link>
+                <div className={Style.formFooter}>
+                <Link to="/csrregistration">CSR Registration</Link>
+                <p>|</p>
+                <Link to="/">Warehouse Login</Link>
             </div>
         </form>
     </div>

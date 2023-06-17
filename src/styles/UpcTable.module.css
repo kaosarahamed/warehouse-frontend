@@ -2,22 +2,26 @@
 .upcSection{
   width: 100%;
   height: auto;
-  margin: 100px 0px;
+  padding: 0px 20px;
+  box-sizing: border-box;
 }
 .upcContainer{
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   overflow-x: auto;
 }
 .upcContainer h1{
-  font-size: 50px;
-  text-align: center;
+  font-size: 20px;
   font-weight: 500;
   color: #141414;
-  border-bottom: 1px solid #000;
-  margin-bottom: 50px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: "Poppins", sans-serif;
+  text-align: left;
+  padding-bottom: 20px;
+}
+.upcTable{
+  overflow-y: auto;
+  height: 75vh;
 }
 .upcTable table {
   font-family: arial, sans-serif;

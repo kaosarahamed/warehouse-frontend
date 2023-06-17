@@ -1,71 +1,98 @@
 section{
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .container{
-    width: 1000px;
+    width: 400px;
     height: auto;
-    background-color: #fff;
-    padding: 100px;
-    border: 1px solid #00000023;
-    border-radius: 10px;
+    background-color: #ecf0f3;
+    padding: 50px;
+    border-radius: 30px;
     box-sizing: border-box;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+    box-shadow: 10px 10px 15px #cbced1,
+    -10px -10px 15px white;
+
 }
 .container h2{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 500;
     text-align: center;
-    padding-bottom: 50px;
-    color: #141414;
+    padding: 40px 0px;
+    color: #555;
     font-family: "Poppins", sans-serif;
+    
+}
+.container .logo{
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: 600;
+    color: #FF4719;
+    border-radius: 50px;
+    background-color: #ecf0f3;
+    box-shadow: 6px 6px 10px #cbced1,
+    -6px -6px 10px white;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Lobster', cursive;
 }
 .container form{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
 }
+.container svg{
+    color: #555;
+}
 .container span{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
-    gap: 5px;
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
     width: 100%;
+    background-color: #ecf0f3;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 15px #cbced1,
+    inset -8px -8px 15px white;
 }
-.container label{
-    font-size: 16px;
-    color: #141414;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-}
+
 .container input{
+    border: none;
     width: 100%;
-    padding: 15px;
     font-size: 16px;
-    color: #141414;
+    color: #555;
     font-weight: 300;
-    border-radius: 5px;
-    border: 1px solid #00000023;
-    background-color: #F5F5F5;  
-    box-sizing: border-box; 
+    background: transparent; 
+}
+.container input:focus{
+    outline: none;
+    background: transparent;
 }
 .container button{
     background-color: #FF4719;
     font-size: 16px;
     color: #fff;
+    width: 100%;
     padding: 15px 50px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: 0.2S ease-in-out;
+    transition: 0.2S linear;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
+    box-shadow: 3px 3px 8px #cbced1,
+    -3px -3px 8px white;
 }
 .container button:hover{
     background-color: #141414;
@@ -73,8 +100,10 @@ section{
 }
 .formFooter{
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
+    width: 100%;
+    gap: 10px;
 }
 .formFooter a{
     font-size: 16px;
@@ -82,7 +111,6 @@ section{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 1px solid #FF4719;
 }
 .formFooter a:hover{
     color: #FF4719;
@@ -106,7 +134,7 @@ section{
   
   .notification h3 {
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     font-family: "Poppins", sans-serif;
   }
@@ -116,32 +144,66 @@ section{
     cursor: pointer;
   }
 /* notification css */
+/* pagination css */
+.pagination{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+.pagination button{
+    background-color: #FF4719;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+.pagination button:hover{
+    background-color: #141414;
+}
+.pagination .active{
+    background-color: #141414;
+}
+
+
+
+
+
+
+
+
+/* pagination css */
 /* media query */
 @media screen and (max-width: 1000px){
-    .container{
+    /* .container{
         width: 95%;
         padding: 50px;
-    }
-    .container h2{
+    } */
+    /* .container h2{
         font-size: 30px;
-    }
+    } */
     .container button{
         font-size: 16px;
         padding: 15px 30px;
     }
     .formFooter{
-        gap: 15px;
+        gap: 10px;
     }
     .formFooter a{
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 @media screen and (max-width: 500px){
     .container{
         padding: 30px;
-    }
-    .formFooter{
-        flex-direction: column;
-        align-items: flex-start;
+        width: 95%;
+        margin: 0 auto;
     }
 }

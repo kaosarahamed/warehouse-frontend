@@ -23,7 +23,7 @@ const createPackage = async (req, res) => {
             });
             newData.save();
         });
-        res.status(200).json({message : "data saved" })
+        res.status(200).json({message : "data saved, Please wait" })
     } catch (error) {
        res.status(500).json({ message : "data saved faild" }) 
     }

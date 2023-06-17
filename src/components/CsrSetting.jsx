@@ -1,25 +1,18 @@
-import Style from '../styles/Dashboard.module.css';
+import Style from '../styles/CsrSetting.module.css';
 import { useEffect, useState } from 'react';
 import global from '../styles/Global.module.css';
 import axios from 'axios';
 import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate } from 'react-router-dom';
+import { FaUser, FaLock } from "react-icons/fa";
 const CsrSetting = () => {
-    // const navigate = useNavigate();
-    // const warehouseUser = localStorage.getItem("warehouseusername");
-    // const csrUser = localStorage.getItem("csrusername");
 
-    // useEffect(() => {
-    //     if(warehouseUser || csrUser){
-    //         navigate("/dashboard/warehousesetting")
-    //     }
-    // },[warehouseUser, navigate, csrUser])
-    
+    const navigate = useNavigate();
     const [users, setUsers] = useState({
         username : "",
         password : ""
     });
-const { username,password} = users;
+const { username} = users;
 const [response, setresponse] = useState("");
 const [loading, setLoading] = useState(false);
 const [notify, setnotify] = useState(false);
@@ -37,7 +30,7 @@ const id = localStorage.getItem("csrId");
             getUser(id)
         }
 
-        console.log(username);
+        
 
     const deleteUser = async (id) => {
         await axios.delete(`http://localhost:4000/csruser/${id}`).then((res)=> {
@@ -80,12 +73,12 @@ const id = localStorage.getItem("csrId");
                     <h2>Edit CSR setting</h2>
                     <form onSubmit={handleSubmit}>
                         <span>
-                            <label htmlFor="username">Edit Username</label>
+                            <FaUser />
                             <input required value={username || ""} type="text" name="username" placeholder="Edit username" id="username" onChange={(e) => handleChange(e)}/>
                         </span>
                         <span>
-                            <label htmlFor="password">Edit Password</label>
-                            <input required value={password || ""} type="password" name="password" id="password" placeholder="Edit password" onChange={(e) => handleChange(e)}/>
+                        <FaLock />
+                            <input required type="password" name="password" id="password" placeholder="Edit password" onChange={(e) => handleChange(e)}/>
                         </span>
                         <div className={Style.formFooter}>
                         <button type="submit">{loading ? "Loading..." : "Save Setting"}</button>

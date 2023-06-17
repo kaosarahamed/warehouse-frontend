@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import Style from "../styles/Dashboard.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
+import Headder from '../components/Headder';
 
 const Dashboard = () => {
 
@@ -22,6 +23,7 @@ const Dashboard = () => {
         <div className={Style.dashboardContainer}>
             <Sidebar />
             <div className={Style.dashboardContent}>
+            <Headder />
             <Outlet/>
             </div>
         </div>

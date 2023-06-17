@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import Style from '../styles/Csr.module.css';
 import axios from 'axios';
 import { FaRegEdit } from "react-icons/fa";
-import { RiCloseCircleFill } from "react-icons/ri";
+import { RiCloseCircleFill, RiCloseFill } from "react-icons/ri";
+import Pagination from '../components/Pagination';
 const Csr = () => {
   // All state 
   const [getpackages, setgetPackages] = useState([]);
@@ -19,6 +20,9 @@ const Csr = () => {
     filterupc : "",
     filtercondition : ""
   });
+  const [disable, setDisable] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPages, setPostPages] = useState(10);
   const {filterdate, filtertracking, filterupc, filtercondition} = filter; 
   const username = localStorage.getItem("csrusername");
 const [process, setprocess] = useState({
@@ -47,7 +51,8 @@ const csrhandleChange = (e) => {
 }
 useEffect(() => {
   getAPiPackages()
-},[])
+
+},[response])
 const editPackages = (id) => {
   setprocessId(id)
   setcsrId(id)
@@ -68,6 +73,7 @@ const processhandleSubmit = async (e) => {
   await axios.put(`http://localhost:4000/packages/${processId}`, process).then((res) => {
     setresponse(res.data.message)
     setLoading(false)
+    setDisable(false)
   }).catch((err) => {
     setresponse(err.response.data.message)
     setLoading(false)
@@ -98,13 +104,26 @@ setFilter({
 });
  
 }
+const lastIndex = currentPage * postPages;
+const firstIndex = lastIndex - postPages;
+const slicePost = getpackages.slice(firstIndex, lastIndex);
+
+
     return (
       <>
       <section className={Style.csrSection}>
       <div className={Style.csrContainer}>
         
-          <h1>CSR Table</h1>
-          {response && <h5>{response}</h5> }
+          
+          {response && 
+          
+          <div className={disable ? Style.disable : Style.enable}>
+            <span className={Style.diableResponse}>
+            <h5>{response}</h5>
+            <RiCloseFill onClick={() => setDisable(true)}/>
+            </span>
+          </div>
+           }
           <div className={Style.csrFiler}>
           <div className={Style.crsFilterContainer}>
             <input type="date" name="filterdate" id="filterdate" value={filterdate} onChange={(e) => filterData(e)}/>
@@ -145,9 +164,9 @@ setFilter({
                   </tr>
                   </thead>
                   <tbody>
-                  {getpackages && getpackages.filter((data) => {
+                  {slicePost && slicePost.filter((data) => {
                     const dates = new Date(data.createdAt).toLocaleDateString() == new Date(filterdate).toLocaleDateString() ? data : null;
-                    console.log(dates);   
+                      
                     return filterdate.length > 0 ? dates : filtertracking.length > 0 ? data.tracking.toLowerCase().includes(filtertracking.toLowerCase()) : filterupc.length > 0 ? data.upc.toLowerCase().includes(filterupc.toLowerCase()) : filtercondition.length > 0 ? data.condition.toLowerCase().includes(filtercondition.toLowerCase()) : clearData
                   }).map((item, index) => {
                       return( 
@@ -204,13 +223,14 @@ setFilter({
   <form onSubmit={csrhandleSubmit}>
   <RiCloseCircleFill onClick={() => setCsrform(false)}/>
   <span>
-              <label htmlFor="processed">Processed</label>
+              <label htmlFor="processed">CSR Note</label>
               <textarea name="csrnote" id="csrnote" cols="30" rows="10" value={csrnote} onChange={(e) => csrhandleChange(e)} placeholder='Ad your note'></textarea>
           </span>
           <button type="submit">{loading ? "Updating..." : "Update"}</button>
   </form>
   </div>
 </div>
+<Pagination totalPosts={getpackages} postPerPage={postPages} setCurrentPage={setCurrentPage} currentPage={currentPage} setPostPages={setPostPages}/>
 </>
     );
 };

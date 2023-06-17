@@ -5,11 +5,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px 0px;
+  padding-left: 10px;
+  box-sizing: border-box;
   position: relative;
 }
+.disable{
+  display: none;
+}
+.enable{
+  display: block;
+}
+.diableResponse{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  background-color: #FF4719;
+  padding: 6px 20px;
+  border-radius: 5px;
+  color: #fff;
+  margin: 10px auto;
+}
+.diableResponse svg{
+  cursor: pointer;
+}
 .csrContainer{
-  width: 98%;
+  width: 100%;
   margin: 0 auto;
   overflow-x: auto;
 }
@@ -22,32 +43,32 @@
   margin-bottom: 50px;
   text-transform: uppercase;
 }
+.csrTable{
+  overflow-y: auto;
+  height: 70vh;
+}
 .csrTable table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+  
 }
 .csrTable table tr th{
   background-color: #FF4719;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 20px;
+  padding: 10px;
   font-family: "Poppins", sans-serif; 
 }  
 .csrSection h5{
-  background-color: #FF4719;
-  padding: 10px 20px;
   border-radius: 5px;
   font-size: 14px;
   color: #fff;
   text-align: center;
   font-weight: 400;
   text-transform: capitalize;
-  width: 20%;
-  margin: 0 auto;
-  margin-bottom: 20px;
 }
 td, th {
   border: 1px solid #F5F5F5;
@@ -58,7 +79,7 @@ td, th {
   background-color: #fff;
   color: #141414;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 .edit{
@@ -100,6 +121,8 @@ td, th {
   gap: 15px;
   border-radius: 5px;
   position: relative;
+  box-shadow: 10px 10px 15px #cbced1,
+    -10px -10px 15px white;
 }
 .processForm span{
   display: flex;
@@ -236,7 +259,7 @@ td, th {
 /* csr filter */
 .csrFiler{
   width: 60%;
-  height: 100px;
+  height: 80px;
 }
 .crsFilterContainer{
   display: flex;
@@ -248,11 +271,12 @@ td, th {
 }
 .crsFilterContainer input{
   width: 100%;
-  height: 25px;
+  height: 45px;
   background-color: #fff;
   border: 1px solid #00000023;
   padding: 10px;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 .crsFilterContainer select{
   width: 100%;
@@ -296,14 +320,33 @@ td, th {
   .csrContainer h1{
     font-size: 25px;
   }
+  .csrFiler{
+    width: 100%;
+    height: 100px;
+  }
 }
 @media screen and (max-width: 768px){
   .processForm form{
     width: 90%;
     padding: 30px;
   }
+  .csrContainer{
+    width:100%;
+}
   .csrForm form{
     width: 90%;
     padding: 30px;
+  }
+  .crsFilterContainer{
+    gap: 10px;
+    flex-direction: column;
+  }
+  .csrFiler{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+  }
+  .csrSection{
+    padding: 10px;
   }
 }
