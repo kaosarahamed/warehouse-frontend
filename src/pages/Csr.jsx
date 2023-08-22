@@ -4,6 +4,7 @@ import axios from 'axios';
 import { FaRegEdit } from "react-icons/fa";
 import { RiCloseCircleFill, RiCloseFill } from "react-icons/ri";
 import Pagination from '../components/Pagination';
+const API_URL = import.meta.env.VITE_API_URL;
 const Csr = () => {
   // All state 
   const [getpackages, setgetPackages] = useState([]);
@@ -43,7 +44,7 @@ const csrhandleChange = (e) => {
   })
 }
   const getAPiPackages = async () => {
-    await axios.get("http://localhost:4000/packages").then((res) => {
+    await axios.get(`${API_URL}packages`).then((res) => {
         setgetPackages(res.data.packages)
     }).catch((err) => {
         setresponse(err.response.data.message)
@@ -70,7 +71,7 @@ const clearFilter = () => {
 const processhandleSubmit = async (e) => {
   setLoading(true)
   e.preventDefault();
-  await axios.put(`http://localhost:4000/packages/${processId}`, process).then((res) => {
+  await axios.put(`${API_URL}packages/${processId}`, process).then((res) => {
     setresponse(res.data.message)
     setLoading(false)
     setDisable(false)
@@ -84,7 +85,7 @@ const processhandleSubmit = async (e) => {
 const csrhandleSubmit = async (e) => {
   setLoading(true)
   e.preventDefault();
-  await axios.put(`http://localhost:4000/packages/${csrId}`, csrnotes).then((res) => {
+  await axios.put(`${API_URL}packages/${csrId}`, csrnotes).then((res) => {
     setresponse(res.data.message)
     setcsrnote({
       csrnote : ""

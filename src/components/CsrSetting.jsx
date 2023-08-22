@@ -5,6 +5,7 @@ import axios from 'axios';
 import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaLock } from "react-icons/fa";
+const API_URL = import.meta.env.VITE_API_URL;
 const CsrSetting = () => {
 
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const id = localStorage.getItem("csrId");
     const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
-        await axios.patch(`http://localhost:4000/csruser/${id}`, users).then((res) => {
+        await axios.patch(`${API_URL}${id}`, users).then((res) => {
                 setresponse(res.data.message);
                 setLoading(false)
             }).catch((err) => {
@@ -33,7 +34,7 @@ const id = localStorage.getItem("csrId");
         
 
     const deleteUser = async (id) => {
-        await axios.delete(`http://localhost:4000/csruser/${id}`).then((res)=> {
+        await axios.delete(`${API_URL}${id}`).then((res)=> {
             setresponse(res.data.message)
         }).catch((err) => {
             setresponse(err.response.data.message)
@@ -47,7 +48,7 @@ const id = localStorage.getItem("csrId");
     }
 
     const getUser = async (id) => {
-        await axios.get(`http://localhost:4000/csruser/${id}`).then((res) => {
+        await axios.get(`${API_URL}${id}`).then((res) => {
             setUsers(res.data)
         }).then((err) => {
             setresponse(err.response.data.message)

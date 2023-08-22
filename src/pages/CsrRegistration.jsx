@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import { RxCross2 } from "react-icons/rx";
 import { FaUser, FaLock } from "react-icons/fa";
+const API_URL = import.meta.env.VITE_API_URL;
 const CsrRegistration = () => {
 
 
@@ -32,7 +33,7 @@ const [notify, setnotify] = useState(false);
             setresponse("Password Should Minimum 8 Character");
             setLoading(false)
         }else{
-            await axios.post("http://localhost:4000/csruser", users).then((res) => {
+            await axios.post(`${API_URL}csruser`, users).then((res) => {
                 setresponse(res.data.message);
                 setLoading(false);
                 setTimeout(() => {

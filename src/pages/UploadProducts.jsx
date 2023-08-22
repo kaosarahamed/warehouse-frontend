@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import Style from '../styles/UploadProducts.module.css';
 import axios from 'axios';
 import { FaUpload } from "react-icons/fa";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const UploadProducts = () => {
     const [csvfile, setFile] = useState(null);
     const [fileError, setfileError] = useState("");
@@ -21,7 +21,7 @@ const UploadProducts = () => {
       setfileError("please select csv file");
       setLoading(false)
     }else{
-      await axios.post("http://localhost:4000/products", formData, {
+      await axios.post(`${API_URL}products`, formData, {
         onUploadProgress: (data) => {
           setUploaded(Math.round((data.loaded / data.total) * 100));
         },

@@ -4,7 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import { RxCross2 } from "react-icons/rx";
 import { FaUser, FaLock } from "react-icons/fa";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const WarehouseLogin = () => {
 
 
@@ -38,7 +38,7 @@ const [notify, setnotify] = useState(false);
             setresponse("Password Should Minimum 8 Character");
             setLoading(false)
         }else{
-            await axios.post("http://localhost:4000/warehouseuser/login", users).then((res) => {
+            await axios.post(`${API_URL}warehouseuser/login`, users).then((res) => {
                 setresponse(res.data.message);
                 localStorage.setItem("warehousetoken", res.data.token);
                 localStorage.setItem("warehouseusername", res.data.user.username);

@@ -2,7 +2,7 @@ import Style from '../styles/Warehouse.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Warehouse = () => {
 
 const navigate = useNavigate();
@@ -21,7 +21,7 @@ const navigate = useNavigate();
     const {tracking, rma, upc, sn, quantity, snmatched, condition, note} = packages;
     const [getpackages, setgetPackages] = useState([]);
     const getAPiPackages = async () => {
-        await axios.get("http://localhost:4000/packages").then((res) => {
+        await axios.get(`${API_URL}packages`).then((res) => {
             setgetPackages(res.data.packages)
         }).catch((err) => {
             setresponse(err.response.data.message)
@@ -45,13 +45,14 @@ const navigate = useNavigate();
             
       };
     const getProducts = async () => {
-        await axios.get("http://localhost:4000/products").then((res) => {
+        await axios.get(`${API_URL}products`).then((res) => {
             setProducts(res.data.products)
         }).catch((err) => {
             setresponse(err.response.data.message)
         })
     }
     
+    console.log(API_URL);
     
     useEffect(() => {
         getProducts();
@@ -85,7 +86,7 @@ const navigate = useNavigate();
         }else if(filterData.length === 0){
             setresponse("UPC Data Does Not Match")
         }else{
-            await axios.post("http://localhost:4000/packages", jsonDatas, {
+            await axios.post(`${API_URL}packages`, jsonDatas, {
             headers : {
                 "Content-Type" : 'application/json'
             }

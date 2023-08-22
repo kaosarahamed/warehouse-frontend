@@ -2,7 +2,7 @@ import Style from "../styles/UpcTable.module.css";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Pagination from "./Pagination";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const UpcTable = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -10,7 +10,7 @@ const UpcTable = () => {
   const [getpackages, setgetPackages] = useState([]);
     const [response, setresponse] = useState("");
   const getAPiPackages = async () => {
-    await axios.get("http://localhost:4000/packages").then((res) => {
+    await axios.get(`${API_URL}packages`).then((res) => {
         setgetPackages(res.data.packages)
     }).catch((err) => {
         setresponse(err.response.data.message)
